@@ -22,7 +22,9 @@
   "homepage": "https://github.com/xpromise/douban-trailer#readme",
   "dependencies": {
     "koa-ejs": "^4.1.1",
-    "koa2": "^2.0.0-alpha.7"
+    "koa2": "^2.0.0-alpha.7",
+    "request": "^2.85.0",
+    "request-promise-native": "^1.0.5"
   },
   "devDependencies": {
     "puppeteer": "^1.4.0"
