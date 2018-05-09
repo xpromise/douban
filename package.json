@@ -1,0 +1,26 @@
+{
+  "name": "douban-trailer",
+  "version": "1.0.0",
+  "description": "nodejs+koa2",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xpromise/douban-trailer.git"
+  },
+  "keywords": [
+    "nodejs",
+    "koa2"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/xpromise/douban-trailer/issues"
+  },
+  "homepage": "https://github.com/xpromise/douban-trailer#readme",
+  "dependencies": {
+    "koa2": "^2.0.0-alpha.7"
+  }
+}
