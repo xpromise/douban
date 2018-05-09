@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width">
+  <title>Koa Douban 首页</title>
+  <link href="https://cdn.bootcss.com/bootstrap/4.1.0/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.bootcss.com/dplayer/1.22.2/DPlayer.min.css" rel="stylesheet">
+  <style>
+    .container-fluid {
+      overflow: hidden;
+      padding: 0;
+    }
+    .bd-navbar {
+      min-height: 4rem;
+      background-color: #563d7c;
+      box-shadow: 0 0.5rem 1rem rgba(0,0,0,.05), inset 0 -1px 0 rgba(0,0,0,.1);
+      margin-bottom: 15px;
+    }
+    .btn-bg {
+      font-weight: 500;
+      color: #ffe484;
+      border-color: #ffe484;
+    }
+    .btn-bg:hover {
+      background-color: #ffe484;
+      color: black;
+      border-color: #ffe484;
+    }
+    .navbar-brand{
+      color: #fff!important;
+    }
+    .navbar {
+      align-items: flex-start;
+    }
+    .card {
+      margin-bottom: 15px;
+    }
+  </style>
+</head>
+<body>
+<div class="container-fluid">
+  <nav class="navbar bd-navbar justify-content-between">
+    <a class="navbar-brand navbar-color">豆瓣预告片</a>
+    <form class="form-inline">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-bg btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </nav>
+  <div class="row">
+    <nav id="navbar-example3" class="navbar navbar-light bg-light col-12 col-md-3 col-lg-2 ">
+      <nav class="nav nav-pills flex-column">
+        <a class="nav-link" href="#item-1">Item 1</a>
+        <nav class="nav nav-pills flex-column">
+          <a class="nav-link ml-3 my-1" href="#item-1-1">Item 1-1</a>
+          <a class="nav-link ml-3 my-1" href="#item-1-2">Item 1-2</a>
+        </nav>
+        <a class="nav-link" href="#item-2">Item2</a>
+        <a class="nav-link" href="#item-3">Item3</a>
+        <nav class="nav nav-pills flex-column">
+          <a class="nav-link ml-3 my-1" href="#item-3-1">Item 3-1</a>
+          <a class="nav-link ml-3 my-1" href="#item-3-2">Item 3-2</a>
+        </nav>
+      </nav>
+    </nav>
+    <div class="content col-12 col-md-9 col-lg-10">
+      <div class="row">
+        <div class="col-md-3">
+          <div class="card">
+            <img class="card-img-top" src="https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=3101321712,1617406504&fm=58&bpow=1024&bpoh=860"
+                 data-video="http://img.51miz.com/Video/10/06/100685_9e603c6de2033efc09bbd59cb779a017.mp4?t=9730181" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">电影标题</h5>
+              <p class="card-text">电影描述</p>
+            </div>
+            <div class="card-footer">
+              <small class="text-mured">1天前更新</small>
+            </div>
+          </div>
+          <div class="card">
+            <img class="card-img-top" src="https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=3101321712,1617406504&fm=58&bpow=1024&bpoh=860"
+                 data-video="http://img.51miz.com/Video/10/06/100685_9e603c6de2033efc09bbd59cb779a017.mp4?t=9730181" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">电影标题</h5>
+              <p class="card-text">电影描述</p>
+            </div>
+            <div class="card-footer">
+              <small class="text-mured">1天前更新</small>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="card">
+            <img class="card-img-top" src="https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=3101321712,1617406504&fm=58&bpow=1024&bpoh=860"
+                 data-video="http://img.51miz.com/Video/10/06/100685_9e603c6de2033efc09bbd59cb779a017.mp4?t=9730181" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">电影标题</h5>
+              <p class="card-text">电影描述</p>
+            </div>
+            <div class="card-footer">
+              <small class="text-mured">1天前更新</small>
+            </div>
+          </div>
+          <div class="card">
+            <img class="card-img-top" src="https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=3101321712,1617406504&fm=58&bpow=1024&bpoh=860"
+                 data-video="http://img.51miz.com/Video/10/06/100685_9e603c6de2033efc09bbd59cb779a017.mp4?t=9730181" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">电影标题</h5>
+              <p class="card-text">电影描述</p>
+            </div>
+            <div class="card-footer">
+              <small class="text-mured">1天前更新</small>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="card">
+            <img class="card-img-top" src="https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=3101321712,1617406504&fm=58&bpow=1024&bpoh=860"
+                 data-video="http://img.51miz.com/Video/10/06/100685_9e603c6de2033efc09bbd59cb779a017.mp4?t=9730181" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">电影标题</h5>
+              <p class="card-text">电影描述</p>
+            </div>
+            <div class="card-footer">
+              <small class="text-mured">1天前更新</small>
+            </div>
+          </div>
+          <div class="card">
+            <img class="card-img-top" src="https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=3101321712,1617406504&fm=58&bpow=1024&bpoh=860"
+                 data-video="http://img.51miz.com/Video/10/06/100685_9e603c6de2033efc09bbd59cb779a017.mp4?t=9730181" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">电影标题</h5>
+              <p class="card-text">电影描述</p>
+            </div>
+            <div class="card-footer">
+              <small class="text-mured">1天前更新</small>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="card">
+            <img class="card-img-top" src="https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=3101321712,1617406504&fm=58&bpow=1024&bpoh=860"
+                 data-video="http://img.51miz.com/Video/10/06/100685_9e603c6de2033efc09bbd59cb779a017.mp4?t=9730181" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">电影标题</h5>
+              <p class="card-text">电影描述</p>
+            </div>
+            <div class="card-footer">
+              <small class="text-mured">1天前更新</small>
+            </div>
+          </div>
+          <div class="card">
+            <img class="card-img-top" src="https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=3101321712,1617406504&fm=58&bpow=1024&bpoh=860"
+                 data-video="http://img.51miz.com/Video/10/06/100685_9e603c6de2033efc09bbd59cb779a017.mp4?t=9730181" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">电影标题</h5>
+              <p class="card-text">电影描述</p>
+            </div>
+            <div class="card-footer">
+              <small class="text-mured">1天前更新</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content" id="dplayer"></div>
+  </div>
+</div>
+
+<script type="text/javascript" src="https://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/bootstrap/4.1.0/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.bootcss.com/dplayer/1.22.2/DPlayer.min.js"></script>
+<script type="text/javascript">
+  $(function () {
+    var player = null
+
+    $('#myModal').on('hidden.bs.modal', function (e) {
+      if (player && player.pause) {
+        player.pause()
+      }
+    })
+
+    $('.card-img-top').click(function () {
+      var video = $(this).data('video')
+      var image = $(this).attr('src')
+
+      $('#myModal').modal('show')
+
+      if (!player) {
+        player = new DPlayer({
+          container: document.getElementById('dplayer'),
+          screenshot: true,
+          video: {
+            url: video,
+            pic: image,
+            thumbnails: image
+          },
+          danmaku: {
+            id: 'demo',
+            api: 'https://api.prprpr.me/dplayer/'
+          }
+        })
+      } else {
+        if (player.video.currentSrc !== video) {
+          player.switchVideo({
+            url: video,
+            pic: image,
+            type: 'auto'
+          })
+        }
+      }
+    })
+  })
+</script>
+</body>
+</html>
