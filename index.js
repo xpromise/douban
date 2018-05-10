@@ -5,9 +5,6 @@ const path = require('path');
 // const {commonTpl} = require('./tpl')
 const {connect} = require('./db/init')
 const router = require('./routes')
-// const Movies = require('./model/Movies')
-// const Categories = require('./model/Categories')
-// const Users = require('./model/Users')
 
 //连接数据库
 ;(async () => {
