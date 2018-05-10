@@ -21,8 +21,10 @@
   },
   "homepage": "https://github.com/xpromise/douban-trailer#readme",
   "dependencies": {
+    "bcrypt": "^2.0.1",
     "koa-ejs": "^4.1.1",
     "koa2": "^2.0.0-alpha.7",
+    "mongoose": "^5.0.18",
     "nanoid": "^1.0.2",
     "qiniu": "^7.1.5",
     "request": "^2.85.0",

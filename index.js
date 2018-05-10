@@ -1,7 +1,22 @@
 const koa = require('koa2')
+const mongoose = require('mongoose')
 const render = require('koa-ejs');
 const path = require('path');
 // const {commonTpl} = require('./tpl')
+const {connect} = require('./db/init')
+
+const Movies = require('./model/Movies')
+const Categories = require('./model/Categories')
+const Users = require('./model/Users')
+
+//连接数据库
+;(async () => {
+  await connect()
+
+  const movies = await Movies.find({})
+  
+  console.log(movies)
+})()
 
 const app = new koa()
 
