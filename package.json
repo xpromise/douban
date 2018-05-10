@@ -25,6 +25,7 @@
     "koa-ejs": "^4.1.1",
     "koa-router": "^7.4.0",
     "koa2": "^2.0.0-alpha.7",
+    "lodash": "^4.17.10",
     "mongoose": "^5.0.18",
     "nanoid": "^1.0.2",
     "qiniu": "^7.1.5",

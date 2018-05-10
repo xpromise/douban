@@ -16,9 +16,9 @@ const router = require('./routes')
 
 const app = new koa()
 
-app
-  .use(router.routes())
-  .use(router.allowedMethods())
+// app
+//   .use(router.routes())
+//   .use(router.allowedMethods())
 
 render(app, {
   root: path.join(__dirname, 'views'),
