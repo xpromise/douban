@@ -1,45 +1,105 @@
-const api = `https://api.douban.com/v2/movie/subject/`
-
 const rp = require('request-promise-native')
+const Movies = require('../../model/Movies')
+const Categories = require('../../model/Categories')
+
+const api = `https://api.douban.com/v2/movie/`
 
 async function fetchMovie (item) {
   const url = api + item.doubanId
 
-  const data = await rp(url)
+  let data = await rp(url)
+  
+  try {
+    data = JSON.parse(data)
+  } catch (e) {
+    console.log(e)
+  }
 
   return data
 }
 
 ;(async () => {
-  let movies = [{
-    doubanId: 27160683,
-    title: '忍者蝙蝠侠',
-    rate: 7.1,
-    poster: 'https://img3.doubanio.com/view/photo/l_ratio_poster/public/p2506695706.jpg'
-  }, {
-    doubanId: 24773958,
-    title: '复仇者联盟3：无限战争',
-    rate: 8.4,
-    poster: 'https://img3.doubanio.com/view/photo/l_ratio_poster/public/p2517753454.jpg'
-  }, {
-    doubanId: 3212397,
-    title: '根西岛文学与土豆皮馅饼俱乐部',
-    rate: 7.4,
-    poster: 'https://img3.doubanio.com/view/photo/l_ratio_poster/public/p2514882923.jpg'
-  }]
+  let movies = await Movies.find({
+    $or: [
+      {summary: {$exists: false}},
+      {summary: null},
+      {summary: ''},
+      {title: ''},
+      {year: {$exists: false}}
+    ]
+  })
 
-  movies.map(async movie => {
+  for (let i = 0, length = [movies[0]].length; i < length; i++) {
+    let movie = movies[i]
     let movieData = await fetchMovie(movie)
 
-    try {
-      movieData = JSON.parse(movieData)
-      console.log(movieData.tags)
-      console.log(movieData.summary)
+    if (movieData) {
+      let tags = movieData.tags || []
+      movie.tags = movie.tags || []
+      movie.summary = movieData.summary || ''
+      movie.title = movieData.alt_title || movieData.title || ''
+      movie.rawTitle = movieData.rawTitle || ''
 
-    } catch (err) {
-      console.log(err)
+      if (movieData.attrs) {
+        movie.movieTypes = movieData.attrs.movie_type || []
+        movie.year = movieData.attrs.year[0] || 2500
+
+        for (let j = 0, length = movie.movieTypes.length; j < length; j++) {
+
+          let item = movie.movieTypes[i]
+
+          let cat = await Categories.findOne({
+            name: item
+          })
+
+          if (!cat) {
+            cat = new Categories({
+              name: item,
+              movies: [movie._id]
+            })
+          } else {
+            if (cat.movies.indexOf(movie._id) === -1) {
+              cat.movies.push(movie._id)
+            }
+          }
+
+          await cat.save()
+
+          if (!movie.categories) {
+            movie.categories.push(cat._id)
+          } else {
+            if (movie.categories.indexOf(cat._id) === -1) {
+              movie.categories.push(cat._id)
+            }
+          }
+        }
+
+        let dates = movieData.attrs.pubdate || []
+        let pubdates = []
+        dates.map(item => {
+          if (item && item.split('(').length > 0) {
+            let parts = item.split('(')
+            let date = parts[0]
+            let country = '未知'
+            if (parts[1]) {
+              country = parts[1].split(')')[0]
+            }
+            pubdates.push({
+              date: new Date(date),
+              country
+            })
+          }
+        })
+        movie.pubdate = pubdates
+      }
+
+      tags.forEach(tag => {
+        movie.tags.push(tag.name)
+      })
+      console.log(movie)
+
+      await movie.save()
     }
-
-  })
+  }
 
 })()

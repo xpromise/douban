@@ -1,5 +1,6 @@
 const cp = require('child_process')
 const path = require('path')
+const Movies = require('../../model/Movies')
 
 ;(async () => {
   const script = path.resolve(__dirname, '../crawler/trailer-list')
@@ -21,6 +22,15 @@ const path = require('path')
 
   child.on('message', data => {
     let result = data.result
+
+    result.forEach(async item => {
+      let movie = await Movies.findOne({doubanId: item.doubanId})
+
+      if (!movie) {
+        movie = new Movies(item)
+        await movie.save()
+      }
+    })
     console.log(result)
   })
 

@@ -2,6 +2,8 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 const {ObjectId, Mixed} = Schema.Types
 
+mongoose.Promise = global.Promise
+
 const movieSchema = new Schema({
   doubanId: {
     unique: true,
@@ -34,18 +36,18 @@ const movieSchema = new Schema({
       type: Date,
       default: Date.now()
     },
-    updateAt: {
+    updatedAt: {
       type: Date,
       default: Date.now()
     }
   }
 })
 
-movieSchema.pre('save', next => {
+movieSchema.pre('save', function (next) {   //注意箭头函数this问题
   if (this.isNew) {
-    this.meta.createdAt = this.meta.updateAt = Date.now()
+    this.meta.createdAt = this.meta.updatedAt = Date.now()
   } else {
-    this.meta.updateAt = Date.now()
+    this.meta.updatedAt = Date.now()
   }
   next()
 })
