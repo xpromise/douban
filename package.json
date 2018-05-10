@@ -23,6 +23,8 @@
   "dependencies": {
     "koa-ejs": "^4.1.1",
     "koa2": "^2.0.0-alpha.7",
+    "nanoid": "^1.0.2",
+    "qiniu": "^7.1.5",
     "request": "^2.85.0",
     "request-promise-native": "^1.0.5"
   },

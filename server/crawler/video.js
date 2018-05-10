@@ -4,7 +4,6 @@ const base = `https://movie.douban.com/subject/`
 const doubanId = `27160683`
 const videoBase = `https://movie.douban.com/trailer/227554`
 
-
 function sleep (time) {
   return new Promise(resolve => {
     setTimeout(resolve, time)
