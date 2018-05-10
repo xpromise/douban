@@ -20,7 +20,6 @@ exports.connect = () => {
     })
 
     mongoose.connection.on('error', err => {
-
       maxConnectTimes++
       if (maxConnectTimes < 5) {
         mongoose.connect('mongodb://localhost:3000/douban-trailer')
