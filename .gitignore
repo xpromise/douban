@@ -18,3 +18,6 @@ build
 
 # parcel
 .cache
+
+# npm
+package-lock.json
