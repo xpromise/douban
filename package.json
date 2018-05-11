@@ -4,6 +4,8 @@
   "description": "nodejs+koa2",
   "main": "index.js",
   "scripts": {
+    "dev": "nodemon -w src --exec \"babel-node src --presets env\"",
+    "build": "babel src -s -D -d dist --presets env",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -29,6 +31,7 @@
     "mongoose": "^5.0.18",
     "nanoid": "^1.0.2",
     "qiniu": "^7.1.5",
+    "ramda": "^0.25.0",
     "request": "^2.85.0",
     "request-promise-native": "^1.0.5"
   },
@@ -42,6 +45,7 @@
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
+    "nodemon": "^1.17.4",
     "puppeteer": "^1.4.0"
   }
 }

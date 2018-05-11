@@ -1,9 +1,11 @@
 const Router = require('koa-router')
-const lodash = require('lodash')
+const _ = require('lodash')
+const glob = require('glob')
+const path = require('path')
 
-const Movies = require('../model/Movies')
-const Categories = require('../model/Categories')
-const Users = require('../model/Users')
+// const Movies = require('../model/Movies')
+// const Categories = require('../model/Categories')
+// const Users = require('../model/Users')
 
 const symbolPrefix = Symbol('prefix')
 const routerMap = new Map()
@@ -18,6 +20,8 @@ export class Route {
   }
 
   init () {
+    glob.sync(path.resolve(this.apiPath, './**/*.js')).forEach(require)
+
     for (let [conf, controller] of routerMap) {
       const controllers = isArray(controller)
       let prefixPath = conf.target[symbolPrefix]
@@ -28,11 +32,10 @@ export class Route {
       this.router[conf.method](routerPath, ...controllers)
     }
 
+
     this.app.use(this.router.routes())
     this.app.use(this.router.allowedMethods())
-
   }
-
 }
 
 export const normalizePath = path => path.startsWith('/') ? path : `/${path}`
