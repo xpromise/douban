@@ -19,19 +19,20 @@ export class movieController {
   // @log
   
   async getMovies (ctx, next) {
-    console.log(ctx.query)
+
     const {type, year} = ctx.query
     const movies = await getAllMovies()
 
     ctx.body = {
-      movies
+      success: true,
+      data: movies
     }
   }
 
   // @post
   // @required({body: ['username', 'douabnId']})
 
-  @get('/:id')
+  @get('/detail/:id')
   async getMovieDetail (ctx, next) {
     const id = ctx.params.id
     const movie = await getMovieDetail(id)

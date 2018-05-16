@@ -1,6 +1,6 @@
 const cp = require('child_process')
 const path = require('path')
-const Movies = require('../../model/Movies')
+const Movies = require('../model/Movies')
 
 ;(async () => {
   const script = path.resolve(__dirname, '../crawler/trailer-list')

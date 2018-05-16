@@ -1,6 +1,6 @@
 const rp = require('request-promise-native')
-const Movies = require('../../model/Movies')
-const Categories = require('../../model/Categories')
+const Movies = require('../model/Movies')
+const Categories = require('../model/Categories')
 
 const api = `https://api.douban.com/v2/movie/`
 
@@ -29,7 +29,7 @@ async function fetchMovie (item) {
     ]
   })
 
-  for (let i = 0, length = [movies[0]].length; i < length; i++) {
+  for (let i = 0, length = movies.length; i < length; i++) {
     let movie = movies[i]
     let movieData = await fetchMovie(movie)
 

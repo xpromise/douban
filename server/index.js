@@ -24,8 +24,12 @@ const useMiddlewares = (app) => {
 //连接数据库
 ;(async () => {
   await connect()
-  // require('./server/tasks/movie')
-  // require('./server/tasks/api')
+  // require('./tasks/movie')
+  // require('./tasks/api')
+  // require('./tasks/trailer')
+
+  // require('./tasks/qiniu')
+
   const app = new koa()
   await useMiddlewares(app)
   app.listen(3000, () => console.log('服务器启动成功了'))
